@@ -4,6 +4,21 @@
 
 namespace Fancy::Graphics
 {
+    Canvas::Canvas(std::uint32_t width, std::uint32_t height)
+        : mainTexture_(width * height),
+        width_{ width }, height_{ height }
+    {}
+
+    void Canvas::PutPixel(std::uint32_t x, std::uint32_t y, Math::Color c)
+    {
+        mainTexture_[y * width_ + x] = c;
+    }
+
+    std::uint32_t Canvas::GetPixelCount() const noexcept
+    {
+        return static_cast<std::uint32_t>(mainTexture_.size());
+    }
+
     // https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
     void Canvas::DrawLine(Math::Uint2 x, Math::Uint2 y, Math::Color c)
     {
@@ -80,6 +95,11 @@ namespace Fancy::Graphics
                 }
             }
         }
+    }
+
+    gsl::span<const Math::Color> Canvas::GetBitmap() const noexcept
+    {
+        return mainTexture_;
     }
 
     void Canvas::Resize(std::uint32_t newWidth, std::uint32_t newHeight)
