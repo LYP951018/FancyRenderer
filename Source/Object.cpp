@@ -9,4 +9,8 @@ namespace Fancy::Graphics
     void Object::OnUpdate()
     {
     }
+
+    Object::~Object()
+    {
+    }
 }

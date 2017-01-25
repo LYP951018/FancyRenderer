@@ -17,6 +17,7 @@ namespace Fancy::Graphics
         Object(std::string_view name);
 
         virtual void OnUpdate();
+        virtual ~Object();
 
     private:
         const std::string name_;
