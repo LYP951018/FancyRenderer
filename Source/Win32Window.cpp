@@ -105,7 +105,6 @@ namespace Fancy::Graphics
         //DO NOT throw exception in WndProc.
         try
         {
-            
             this->OnUpdate(*canvas_);
         }
         catch (...)
@@ -114,8 +113,7 @@ namespace Fancy::Graphics
         }
         
         const auto dcHandle = ::GetDC(GetWin32WindowHandle(*this));
-        ::BITMAPINFO bmi;
-        memset(&bmi, 0, sizeof(bmi));
+        ::BITMAPINFO bmi = {};
         bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
         bmi.bmiHeader.biWidth = canvas_->GetWidth();
         bmi.bmiHeader.biHeight = -static_cast<std::int32_t>(canvas_->GetHeight()); // top-down image
