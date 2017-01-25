@@ -2,11 +2,11 @@
 
 
 #define DefGetter(name, type, ret) \
-    auto name() const noexcept -> type \
+    auto name() const /*noexcept*/ -> type \
     { return ret; }
 
 #define DefSetter(name, type, member) \
-    void name(type value) noexcept \
+    void name(type value) /*noexcept*/ \
     { member = value; }
 
 
